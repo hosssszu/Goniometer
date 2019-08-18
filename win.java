@@ -177,17 +177,29 @@ public class win {
     				double d8=Math.abs(d7);
     				
     				double d9 = 90-d8;
+				
+				double d10 = d1+de;
     				
     				double di = de/d3;
     				double dii = Math.atan(di);
     				double diii = (float)((dii*180)/Math.PI);
     				
     				double diiii = 90-diii;
+				
+				if(d10<=d2 && de>=0) {
     
-    			    label_1.setText(String.format("%.2f°", diii));
-    			    label_2.setText(String.format("%.2f°", diiii));
-    			    label_3.setText(String.format("%.2f°", d9));
-    				label_4.setText(String.format("%.2f°", d8));
+    			label_1.setText(String.format("%.2f°", diii));
+    			label_2.setText(String.format("%.2f°", diiii));
+    			label_3.setText(String.format("%.2f°", d9));
+    			label_4.setText(String.format("%.2f°", d8));
+			}else {
+    				label_1.setText("");
+    				label_2.setText("");
+    				label_3.setText("");
+    				label_4.setText("");
+    				JOptionPane.showMessageDialog(null, "Something went wrong!" ,"Message", JOptionPane.INFORMATION_MESSAGE);
+
+    			}
         	    }
         	}
         });
