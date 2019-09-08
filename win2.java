@@ -1,6 +1,5 @@
 package szog;
 
-import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Graphics;
 import javax.swing.JFrame;
@@ -63,25 +62,51 @@ public class win2 extends JFrame {
 		displacement=textField_3.getText();
 		Double d4 = Double.parseDouble(displacement);		
 		
-		double d5 = d1+d4;
-		double d6 = 700/d2; //scale factor
+		double f = d3/d2;
 		
-		Double d7 = d2*d6; //botton
-		Double d8 = d5*d6; //top
-		Double d9 = d4*d6; // displacement
-		Double d10 = d3*d6; // height
+		if(f>0.7) {	
+			
+			double a1 = d1+d4;
+			double a2 = 500/d3;
+			
+			Double a3 = d2*a2; //botton
+			Double a4 = a1*a2; //~top
+			Double a5 = d4*a2; //disp
+			Double a6 = d3*a2; //height
+			
+			Integer i5 = a3.intValue(); //botton
+			Integer i6 = a4.intValue(); //top
+			Integer i7 = a5.intValue(); // displacement
+			Integer i8 = a6.intValue(); // height
+			
+			int xpoints[] = {400-(i5/2), 400+(i5/2), 400-(i5/2)+i6, 400-(i5/2)+i7, 400-(i5/2)};
+			int ypoints[] = {550, 550, 550-i8, 550-i8, 550};
+			int npoints = 5;
+			
+			g.fillPolygon(xpoints, ypoints, npoints);		
 		
-		Integer i1 = d7.intValue(); //botton
-		Integer i2 = d8.intValue(); //top
-		Integer i3 = d9.intValue(); //displacement
-		Integer i4 = d10.intValue(); // height
-		  
-		int xpoints[] = {50, i1+50, i2+50, i3+50, 50};
-		int ypoints[] = {550, 550, 550-i4, 550-i4, 550};
-		int npoints = 5;
-		   
-		g.fillPolygon(xpoints, ypoints, npoints);
-	}
+			} else {
+
+				double d5 = d1+d4;
+				double d6 = 700/d2; //scale factor
+
+				Double d7 = d2*d6; //botton
+				Double d8 = d5*d6; //top
+				Double d9 = d4*d6; // displacement
+				Double d10 = d3*d6; // height
+				
+				Integer i1 = d7.intValue(); //botton
+				Integer i2 = d8.intValue(); //top
+				Integer i3 = d9.intValue(); //displacement
+				Integer i4 = d10.intValue(); // height
+				  
+				int xpoints[] = {50, i1+50, i2+50, i3+50, 50};
+				int ypoints[] = {550, 550, 550-i4, 550-i4, 550};
+				int npoints = 5;
+				   
+				g.fillPolygon(xpoints, ypoints, npoints);
+			}
+		}
 	
 	public win2() {
 		setTitle("Scaled Image");
