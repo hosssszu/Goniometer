@@ -1,6 +1,5 @@
 package szog;
 
-import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
@@ -23,9 +22,7 @@ public class win {
 	public JTextField textField;
 	public JTextField textField_1;
 	public JTextField textField_2;
-	public JLabel textField_3;
 	public JTextField textField_4;
-	
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -51,8 +48,7 @@ public class win {
 		frame.setTitle("Goniometer");
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
-//		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-	    frame.getContentPane().setLayout(null);
+		frame.getContentPane().setLayout(null);
 		
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
@@ -65,7 +61,7 @@ public class win {
 		JMenuItem mntmExit = new JMenuItem("Exit");
 		mntmExit.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		mntmExit.setMnemonic(KeyEvent.VK_X);
-        mntmExit.setToolTipText("Exit application");
+                mntmExit.setToolTipText("Exit application");
 		mntmExit.addActionListener((event) -> System.exit(0));
 		mnFile.add(mntmExit);
 		
@@ -136,6 +132,11 @@ public class win {
         textField_4.setToolTipText("displacement");
         frame.getContentPane().add(textField_4);
         
+        JLabel label = new JLabel();
+        label.setBounds(20, 12, 650, 450);
+        label.setIcon(new ImageIcon("C:\\Users\\Lorand\\eclipse-workspace\\szog\\src\\download3.jpg"));
+        frame.getContentPane().add(label); 
+        
         JButton button = new JButton("Scale");
         button.setBounds(306, 474, 119, 30);
         button.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -147,9 +148,8 @@ public class win {
      		   tuna.setTextFieldText2(textField_1.getText());
      		   tuna.setTextFieldText3(textField_2.getText());
      		   tuna.setTextFieldText4(textField_4.getText());
-//     		   frame.dispose();
      		   tuna.setVisible(true);	
-     		}
+     	  }
         });
         frame.getContentPane().add(button);
         
@@ -177,28 +177,35 @@ public class win {
     				double d8=Math.abs(d7);
     				
     				double d9 = 90-d8;
-				
-				double d10 = d1+de;
+    				
+    				double d10 = d1+de;
     				
     				double di = de/d3;
     				double dii = Math.atan(di);
     				double diii = (float)((dii*180)/Math.PI);
     				
     				double diiii = 90-diii;
-				
-				if(d10<=d2 && de>=0) {
+    				
+    				if(d10<=d2 && de>=0) {
     
-    			label_1.setText(String.format("%.2f°", diii));
-    			label_2.setText(String.format("%.2f°", diiii));
-    			label_3.setText(String.format("%.2f°", d9));
-    			label_4.setText(String.format("%.2f°", d8));
-			}else {
-    				label_1.setText("");
-    				label_2.setText("");
-    				label_3.setText("");
-    				label_4.setText("");
-    				JOptionPane.showMessageDialog(null, "Something went wrong!" ,"Message", JOptionPane.INFORMATION_MESSAGE);
-
+    				label_1.setText(String.format("%.2f°", diii));
+    				label_2.setText(String.format("%.2f°", diiii));
+				label_3.setText(String.format("%.2f°", d9));
+				label_4.setText(String.format("%.2f°", d8));
+    				
+    		        label.setIcon(new ImageIcon("C:\\Users\\Lorand\\eclipse-workspace\\szog\\src\\download2.jpg"));
+    				
+    				}else {
+    					label_1.setText("");
+    					label_2.setText("");
+    					label_3.setText("");
+    					label_4.setText("");
+    					textField.setText("");
+    					textField_1.setText("");
+    					textField_2.setText("");
+    					textField_4.setText("");
+        		        label.setIcon(new ImageIcon("C:\\Users\\Lorand\\eclipse-workspace\\szog\\src\\download3.jpg"));
+    					JOptionPane.showMessageDialog(null, "Something went wrong!" ,"Message", JOptionPane.INFORMATION_MESSAGE);
     			}
         	    }
         	}
@@ -213,11 +220,6 @@ public class win {
 				System.exit(0);
 			}
 		});
-	    frame.getContentPane().add(btnNewButton);
-
-       JLabel label = new JLabel();
-       label.setBounds(20, 12, 650, 450);
-       label.setIcon(new ImageIcon("C:\\Users\\Lorand\\eclipse-workspace\\szog\\src\\download2.jpg"));
-       frame.getContentPane().add(label); 
+		frame.getContentPane().add(btnNewButton);
 	}
 }
