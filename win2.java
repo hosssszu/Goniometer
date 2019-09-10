@@ -2,10 +2,15 @@ package szog;
 
 import java.awt.EventQueue;
 import java.awt.Graphics;
+import javax.swing.AbstractAction;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
+import javax.swing.KeyStroke;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
 public class win2 extends JFrame {
 
@@ -101,10 +106,11 @@ public class win2 extends JFrame {
 				Integer i4 = d10.intValue(); // height
 				  
 				int xpoints[] = {50, i1+50, i2+50, i3+50, 50};
-				int ypoints[] = {550, 550, 550-i4, 550-i4, 550};
+				int ypoints[] = {300+i4/2, 300+i4/2, 300-i4/2, 300-i4/2, 300+i4/2};
 				int npoints = 5;
 				   
 				g.fillPolygon(xpoints, ypoints, npoints);
+				
 			}
 		}
 	
@@ -114,10 +120,20 @@ public class win2 extends JFrame {
 		setBounds(0, 0, 800, 600);
 		setLocationRelativeTo(null);
 		setResizable(false);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
+		
+		KeyStroke escapeKeyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);
+		AbstractAction escapeAction = new AbstractAction()
+			{
+				public void actionPerformed(ActionEvent e)
+				{dispose();}
+			};
+		getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(escapeKeyStroke, "ESCAPE");
+		getRootPane().getActionMap().put("ESCAPE", escapeAction);
 		
 		textField = new JTextField(); //top
 		textField.setBounds(693, 16, 86, 20);
